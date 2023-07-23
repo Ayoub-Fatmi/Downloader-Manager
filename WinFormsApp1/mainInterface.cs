@@ -1,4 +1,6 @@
-﻿using System;
+﻿/*
+//sites
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,72 +56,129 @@ namespace WinFormsApp1
 
             // URL is invalid or inaccessible
             return false;
-        }*/
-        private async void button1_Click(object sender, EventArgs e)
+        }*-/
+private async void button1_Click(object sender, EventArgs e)
         {
-            /*using (WebClient client = new WebClient())
+    /*using (WebClient client = new WebClient())
+    {
+        try
+        {
+            // Display the SaveFileDialog to let the user choose the download path
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = Path.GetFileName(textBox1.Text); // Set the default file name
+
+            if (Path.GetExtension(new Uri(textBox1.Text).AbsolutePath) ==""){
+                MessageBox.Show($"without");
+                Uri uri = new Uri(textBox1.Text);
+                saveFileDialog.FileName = uri.Segments.Last() + ".html"; // Set the default file name
+                if (Path.GetFileName(textBox1.Text) == "")
+                {
+                    string domain = uri.Host;
+                    // Extract the domain name without the subdomains
+                    string[] subdomains = domain.Split('.');
+                    string domainName = subdomains[subdomains.Length - 2];
+                    saveFileDialog.FileName = domainName + ".html"; // Set the default file name
+                }
+            }
+            else
+            {
+                saveFileDialog.FileName = Path.GetFileName(textBox1.Text); // Set the default file name
+                MessageBox.Show($"{saveFileDialog.FileName}");
+            }
+            saveFileDialog.Filter = "All Files (*.*)|*.*"; // Set the file type filter
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Start the download with the selected save path
+                client.DownloadFile(textBox1.Text, saveFileDialog.FileName);
+                MessageBox.Show("Download completed successfully.");
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred during the download: {ex.Message}");
+        }
+    }**-/
+
+}
+}
+}*/
+
+//pictures
+using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+
+namespace WinFormsApp1
+{
+    public partial class mainInterface : Form
+    {
+        public mainInterface()
+        {
+            InitializeComponent();
+        }
+        public static string GetVideoId(string youtubeUrl)
+        {
+            string pattern = @"(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)";
+            Match match = Regex.Match(youtubeUrl, pattern);
+
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+
+            // Return null if no video ID is found
+            return null;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string imageUrl = textBox1.Text.Trim();
+
+            if (!string.IsNullOrEmpty(imageUrl))
             {
                 try
                 {
-                    // Display the SaveFileDialog to let the user choose the download path
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.FileName = Path.GetFileName(textBox1.Text); // Set the default file name
-
-                    if (Path.GetExtension(new Uri(textBox1.Text).AbsolutePath) ==""){
-                        MessageBox.Show($"without");
-                        Uri uri = new Uri(textBox1.Text);
-                        saveFileDialog.FileName = uri.Segments.Last() + ".html"; // Set the default file name
-                        if (Path.GetFileName(textBox1.Text) == "")
+                    using (WebClient webClient = new WebClient())
+                    {
+                        //google image
+                        if (imageUrl.StartsWith("data:image/jpeg;base64,"))
                         {
-                            string domain = uri.Host;
-                            // Extract the domain name without the subdomains
-                            string[] subdomains = domain.Split('.');
-                            string domainName = subdomains[subdomains.Length - 2];
-                            saveFileDialog.FileName = domainName + ".html"; // Set the default file name
+                            byte[] imageData = Convert.FromBase64String(imageUrl.Split(',')[1]);
+                            using (MemoryStream ms = new MemoryStream(imageData))
+                            {
+                                pictureBox1.Image = Image.FromStream(ms);
+                            }
                         }
-                    }
-                    else
-                    {
-                        saveFileDialog.FileName = Path.GetFileName(textBox1.Text); // Set the default file name
-                        MessageBox.Show($"{saveFileDialog.FileName}");
-                    }
-                    saveFileDialog.Filter = "All Files (*.*)|*.*"; // Set the file type filter
-
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        // Start the download with the selected save path
-                        client.DownloadFile(textBox1.Text, saveFileDialog.FileName);
-                        MessageBox.Show("Download completed successfully.");
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(GetVideoId(imageUrl)))
+                            {
+                                //ytb thumbn
+                                imageUrl = "https://img.youtube.com/vi/" + GetVideoId(imageUrl) + "/hqdefault.jpg";
+                                
+                            }
+                            //image with normal link
+                            byte[] imageData = webClient.DownloadData(imageUrl);
+                            using (MemoryStream stream = new MemoryStream(imageData))
+                            {
+                                pictureBox1.Image = Image.FromStream(stream);
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred during the download: {ex.Message}");
+                    MessageBox.Show("Error downloading the image: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }*/
-            /*var youtube = new YoutubeClient();
-
-            // You can specify either the video URL or its ID
-            var videoUrl = "https://youtube.com/watch?v=u_yIGGhubZs";
-            var video = await youtube.Videos.GetAsync(videoUrl);
-
-            var title = video.Title; // "Collections - Blender 2.80 Fundamentals"
-            var author = video.Author.ChannelTitle; // "Blender"
-            var duration = video.Duration; // 00:07:20
-
-            MessageBox.Show($"{title} {author} {duration}");*/
-            /*var youtube = new YoutubeClient();
-
-            var videoUrl = "https://youtube.com/watch?v=u_yIGGhubZs";
-            var streamManifest = await youtube.Videos.Streams.GetManifestAsync(videoUrl);
-
-            // Get highest quality muxed stream
-            var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-
-            // Get the actual stream
-            var stream = await youtube.Videos.Streams.GetAsync(streamInfo);
-            // Download the stream to a file
-            await youtube.Videos.Streams.DownloadAsync(streamInfo, $"video.{streamInfo.Container}");*/
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid image URL.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

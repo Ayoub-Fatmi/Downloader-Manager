@@ -44,7 +44,7 @@ namespace WinFormsApp1
                                 string username = reader.GetString(reader.GetOrdinal("username"));
                                 MessageBox.Show($"Welcome {username}");
                                 this.Hide();
-                                new Form2().Show();
+                                new mainInterface().Show();
                             }
                             else
                             {
