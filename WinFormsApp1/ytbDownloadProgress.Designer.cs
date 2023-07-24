@@ -46,9 +46,8 @@
             label7.AutoSize = true;
             label7.Location = new Point(251, 101);
             label7.Name = "label7";
-            label7.Size = new Size(38, 15);
+            label7.Size = new Size(0, 15);
             label7.TabIndex = 7;
-            label7.Text = "label7";
             // 
             // btnStopUpdating
             // 
@@ -71,7 +70,7 @@
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(124, 204);
+            progressBar1.Location = new Point(142, 219);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(207, 23);
             progressBar1.TabIndex = 13;
@@ -108,38 +107,34 @@
             label6.AutoSize = true;
             label6.Location = new Point(251, 58);
             label6.Name = "label6";
-            label6.Size = new Size(38, 15);
+            label6.Size = new Size(0, 15);
             label6.TabIndex = 18;
-            label6.Text = "label6";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Location = new Point(251, 139);
             label8.Name = "label8";
-            label8.Size = new Size(38, 15);
+            label8.Size = new Size(0, 15);
             label8.TabIndex = 19;
-            label8.Text = "label8";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(251, 174);
             label9.Name = "label9";
-            label9.Size = new Size(38, 15);
+            label9.Size = new Size(0, 15);
             label9.TabIndex = 20;
-            label9.Text = "label9";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(50, 286);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(0, 15);
             label5.TabIndex = 21;
-            label5.Text = "label5";
             // 
-            // progress
+            // ytbDownloadProgress
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -155,7 +150,7 @@
             Controls.Add(label1);
             Controls.Add(btnStopUpdating);
             Controls.Add(label7);
-            Name = "progress";
+            Name = "ytbDownloadProgress";
             Text = "progress";
             Load += progress_Load;
             ResumeLayout(false);

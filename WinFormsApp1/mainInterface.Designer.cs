@@ -65,7 +65,7 @@
             // 
             pictureBox1.Location = new Point(36, 131);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(687, 316);
+            pictureBox1.Size = new Size(687, 439);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
@@ -73,7 +73,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 613);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(button1);
