@@ -123,7 +123,6 @@
         private TextBox passwordTB;
         private Button loginBut;
         private Button signUpBut;
-        private Label label3;
         private Label label4;
     }
 }

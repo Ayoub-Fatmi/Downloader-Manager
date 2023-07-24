@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class ytbDownloader
+    partial class filesAndSitesDownloader
     {
         /// <summary>
         /// Required designer variable.
@@ -28,71 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             textBox1 = new TextBox();
-            comboBoxQuality = new ComboBox();
+            button1 = new Button();
+            label1 = new Label();
             button2 = new Button();
             SuspendLayout();
             // 
-            // button1
-            // 
-            button1.Location = new Point(230, 153);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Download";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // textBox1
             // 
-            textBox1.Location = new Point(65, 115);
+            textBox1.Location = new Point(84, 30);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(418, 23);
-            textBox1.TabIndex = 1;
+            textBox1.Size = new Size(313, 23);
+            textBox1.TabIndex = 0;
             // 
-            // comboBoxQuality
+            // button1
             // 
-            comboBoxQuality.DisplayMember = "1080p";
-            comboBoxQuality.FormattingEnabled = true;
-            comboBoxQuality.Items.AddRange(new object[] { "1080p", "720p", "480p", "360p", "240p", "144p", "mp3" });
-            comboBoxQuality.Location = new Point(519, 115);
-            comboBoxQuality.Name = "comboBoxQuality";
-            comboBoxQuality.Size = new Size(121, 23);
-            comboBoxQuality.TabIndex = 2;
-            comboBoxQuality.Text = "720p";
-            comboBoxQuality.ValueMember = "1080p";
+            button1.Location = new Point(194, 59);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Download";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(19, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Your Link:";
             // 
             // button2
             // 
-            button2.Location = new Point(494, 203);
+            button2.Location = new Point(322, 82);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 3;
-            button2.Text = "Go back";
+            button2.Text = "go back";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button2.Click += button2_Click_1;
             // 
-            // ytbDownloader
+            // filesAndSitesDownloader
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(697, 299);
+            ClientSize = new Size(455, 134);
             Controls.Add(button2);
-            Controls.Add(comboBoxQuality);
-            Controls.Add(textBox1);
+            Controls.Add(label1);
             Controls.Add(button1);
-            Name = "ytbDownloader";
-            Text = "Form2";
+            Controls.Add(textBox1);
+            Name = "filesAndSitesDownloader";
+            Text = "mainInterface";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
         private TextBox textBox1;
-        private ComboBox comboBoxQuality;
+        private Button button1;
+        private Label label1;
         private Button button2;
     }
 }

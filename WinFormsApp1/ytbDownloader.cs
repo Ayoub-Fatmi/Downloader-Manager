@@ -1,10 +1,7 @@
 ﻿//youtube videos
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using static IronPython.Modules.PythonIterTools;
-using System.Threading;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace WinFormsApp1
 {
@@ -134,6 +131,12 @@ namespace WinFormsApp1
             if (!string.IsNullOrEmpty(e.Data))
             {
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new Form1().Show();
         }
     }
 }
